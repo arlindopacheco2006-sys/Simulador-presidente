@@ -1,0 +1,10 @@
+{
+  "name": "Presidente do Brasil - O Simulador",
+  "short_name": "Presidente BR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef2f6",
+  "theme_color": "#10243b",
+  "description": "Simulador de governo, economia, ministérios e eleições.",
+  "icons": []
+}
