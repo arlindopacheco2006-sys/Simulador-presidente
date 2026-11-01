@@ -20,5 +20,5 @@ Abra o endereço publicado no Chrome → menu ⋮ → **Adicionar à tela inicia
 - O jogo salva no armazenamento local do navegador. Use “Salvar jogo” para gravar manualmente.
 - A eleição presidencial acontece no fim do quarto ano do mandato.
 
-## Observação
+## Novidades da V1.1\n- Humor da população com cinco expressões, atualizado conforme a aprovação do governo.\n- Saldo pessoal fictício do presidente, separado do caixa público.\n- Opção de destinar recursos pessoais a projetos nacionais, com registro no noticiário e salvamento local.\n\n## Observação
 É uma simulação fictícia para entretenimento e aprendizagem cívica. Valores, efeitos e eventos são simplificados e não constituem previsões econômicas ou eleitorais.

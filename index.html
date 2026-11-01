@@ -21,7 +21,7 @@ main{max-width:1100px;margin:auto;padding:14px 14px 90px}.hero{background:linear
 .news{padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.news:last-child{border:0}.news time{font-size:10px;color:var(--muted);display:block;margin-bottom:3px}
 .badge{font-size:10px;background:#edf2f6;border-radius:20px;padding:3px 7px;color:#526273}.warning{color:#a33b3b}.good{color:#16845b}.election{background:linear-gradient(130deg,#132d47,#285475);color:white}.election p{color:#d9e3eb}.election button{background:var(--gold);color:#172536}
 footer{text-align:center;color:#8290a0;font-size:11px;padding:20px}
-@media(min-width:700px){main{padding:22px}.stats{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:21px}}
+@media(min-width:700px){main{padding:22px}.stats{grid-template-columns:repeat(5,1fr)}.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}.brand h1{font-size:21px}}
 </style>
 </head>
 <body>
@@ -33,9 +33,14 @@ footer{text-align:center;color:#8290a0;font-size:11px;padding:20px}
  <section class="hero"><small>PALÁCIO DO PLANALTO • GABINETE PRESIDENCIAL</small><h2 id="greeting">Bom dia, Presidente.</h2><p>Administre o país, negocie com o Congresso, distribua o orçamento e prepare-se para prestar contas nas urnas.</p></section>
  <div class="stats">
   <div class="stat"><span>Aprovação popular</span><strong id="approval">58%</strong><em id="approvalHint">A população acompanha seu governo</em><div class="bar"><i id="approvalBar" style="width:58%"></i></div></div>
-  <div class="stat"><span>Caixa do governo</span><strong id="cash">R$ 250 bi</strong><em>Saldo disponível no orçamento</em></div>
+  <div class="stat"><span>Caixa do governo</span><strong id="cash">R$ 250 bi</strong><em>Dinheiro público • orçamento federal</em></div>
+  <div class="stat"><span>Saldo pessoal do presidente</span><strong id="personalCash">R$ 50 mi</strong><em>Patrimônio pessoal fictício</em></div>
   <div class="stat"><span>Inflação anual</span><strong id="inflation">4,5%</strong><em>Índice simulado</em></div>
   <div class="stat"><span>Desemprego</span><strong id="unemployment">8,0%</strong><em>Índice simulado</em></div>
+ </div>
+ <div class="card" style="margin:0 0 13px;display:flex;align-items:center;gap:13px">
+  <div id="moodFace" style="font-size:42px;line-height:1">😊</div>
+  <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b>Humor da população</b><strong id="moodLabel">Satisfeita</strong></div><div class="muted" id="moodText">A população acompanha seu governo.</div><div class="bar"><i id="moodBar" style="width:58%"></i></div></div>
  </div>
  <nav class="tabs">
   <button class="active" data-tab="inicio">🏛️ Visão geral</button><button data-tab="economia">💰 Economia</button><button data-tab="ministerios">🏫 Ministérios</button><button data-tab="defesa">🛡️ Defesa</button><button data-tab="congresso">📜 Congresso</button><button data-tab="estados">🗺️ Estados</button><button data-tab="mundo">🌎 Exterior</button><button data-tab="eleicoes">🗳️ Eleições</button>
@@ -46,6 +51,7 @@ footer{text-align:center;color:#8290a0;font-size:11px;padding:20px}
    <div class="card"><h3>Indicadores do Brasil</h3><div class="row"><label>Educação</label><b id="education">65/100</b></div><div class="bar"><i id="educationBar" style="width:65%"></i></div><div class="row"><label>Saúde</label><b id="health">62/100</b></div><div class="bar"><i id="healthBar" style="width:62%"></i></div><div class="row"><label>Segurança</label><b id="security">60/100</b></div><div class="bar"><i id="securityBar" style="width:60%"></i></div><div class="row"><label>Infraestrutura</label><b id="infra">57/100</b></div><div class="bar"><i id="infraBar" style="width:57%"></i></div></div>
    <div class="card"><h3>Próximas decisões</h3><p class="muted">Você pode aprovar projetos, ajustar impostos e priorizar áreas. Cada avanço de trimestre atualiza os indicadores e gera acontecimentos.</p><div class="row"><label>Relação com o Congresso</label><b id="congressSupport">52%</b></div><div class="bar"><i id="congressBar" style="width:52%"></i></div><div class="row"><label>Confiança internacional</label><b id="diplomacy">60/100</b></div><div class="bar"><i id="diplomacyBar" style="width:60%"></i></div><div class="btnrow"><button class="action" onclick="advance()">Avançar 3 meses ▶</button><button class="action secondary" onclick="saveGame()">Salvar jogo</button></div></div>
   </div>
+  <div class="card" style="margin-top:10px"><h3>💼 Conta pessoal do presidente</h3><p class="muted">Seu patrimônio pessoal é separado do caixa público. Você pode destinar parte dele a projetos para o país, de forma transparente, sem misturar dinheiro particular com dinheiro do governo.</p><div class="row"><label>Saldo pessoal disponível</label><strong id="personalCashPanel">R$ 50 mi</strong></div><div class="row"><label>Valor para investir no país (R$ milhões)</label><output id="personalAmountOut">5 mi</output></div><input id="personalAmount" type="range" min="1" max="50" step="1" value="5" oninput="personalAmountOut.textContent=this.value+' mi'"><div class="row"><label>Destino da contribuição</label></div><select id="personalArea"><option value="education">Escolas e educação</option><option value="health">Hospitais e saúde</option><option value="infra">Obras e infraestrutura</option><option value="security">Prevenção e segurança</option><option value="agro">Agricultura familiar</option></select><div class="btnrow"><button class="action" onclick="personalContribution()">Destinar dinheiro pessoal ao país</button></div><p class="muted" id="personalMessage">Contribuições são registradas no noticiário do jogo.</p></div>
   <div class="card" style="margin-top:10px"><h3>Noticiário nacional</h3><div id="news"><div class="news"><time>INÍCIO DO MANDATO</time>Você tomou posse. O país aguarda as primeiras medidas do novo governo.</div></div></div>
  </section>
  <section id="economia" class="panel">
@@ -86,7 +92,7 @@ footer{text-align:center;color:#8290a0;font-size:11px;padding:20px}
 </main>
 <script>
 const $=id=>document.getElementById(id);
-const defaults={year:2027,quarter:1,approval:58,cash:250,inflation:4.5,unemployment:8,education:65,health:62,security:60,infra:57,support:52,diplomacy:60,term:1,mode:'realista + livre',tax:18,companyTax:25,salary:1600,investment:3,budget:{'Educação':45,'Saúde':48,'Defesa':28,'Infraestrutura':25,'Agricultura':12,'Ciência e Tecnologia':10,'Meio Ambiente':7,'Justiça e Segurança':15},history:[],news:[],defense:{army:55,navy:45,air:50}};
+const defaults={year:2027,quarter:1,approval:58,cash:250,personalCash:50,inflation:4.5,unemployment:8,education:65,health:62,security:60,infra:57,support:52,diplomacy:60,term:1,mode:'realista + livre',tax:18,companyTax:25,salary:1600,investment:3,budget:{'Educação':45,'Saúde':48,'Defesa':28,'Infraestrutura':25,'Agricultura':12,'Ciência e Tecnologia':10,'Meio Ambiente':7,'Justiça e Segurança':15},history:[],news:[],defense:{army:55,navy:45,air:50}};
 let s={...defaults};
 function load(){try{const v=JSON.parse(localStorage.getItem('presidenteBR'));if(v)s={...defaults,...v,budget:{...defaults.budget,...v.budget}}}catch(e){}}
 function saveGame(){localStorage.setItem('presidenteBR',JSON.stringify(s));notify('Partida salva neste aparelho.')}
@@ -95,9 +101,19 @@ function money(v){return 'R$ '+Math.round(v).toLocaleString('pt-BR')+' bi'}
 function clamp(v,a=0,b=100){return Math.max(a,Math.min(b,v))}
 function addNews(t){s.news.unshift({date:`${s.quarter}º trimestre de ${s.year}`,text:t});s.news=s.news.slice(0,8);renderNews()}
 function renderNews(){$('news').innerHTML=s.news.length?s.news.map(n=>`<div class="news"><time>${n.date.toUpperCase()}</time>${n.text}</div>`).join(''):'<div class="muted">Sem notícias.</div>'}
+function renderMood(){
+ let face='😐',label='Indiferente',message='A população está dividida sobre os rumos do governo.';
+ if(s.approval>=80){face='😍';label='Muito satisfeita';message='Grande parte da população demonstra entusiasmo com suas decisões.'}
+ else if(s.approval>=65){face='😊';label='Satisfeita';message='A população está reagindo positivamente ao governo.'}
+ else if(s.approval>=45){face='😐';label='Indiferente';message='A população acompanha os resultados e espera novas medidas.'}
+ else if(s.approval>=25){face='😟';label='Insatisfeita';message='Há críticas e preocupação com os rumos do país.'}
+ else {face='😡';label='Revoltada';message='A insatisfação popular está muito alta. Protestos e pressão política podem crescer.'}
+ $('moodFace').textContent=face;$('moodLabel').textContent=label;$('moodText').textContent=message;$('moodBar').style.width=s.approval+'%';
+ $('moodBar').style.background=s.approval>=65?'#16845b':s.approval>=45?'#d5a33d':'#c34b4b';
+}
 function render(){ $('dateLabel').textContent=`${s.quarter===1?'1º':s.quarter+'º'} trimestre de ${s.year} • Ano ${s.year-2026}/4`; $('modeLabel').textContent='Modo '+s.mode;
 $('approval').textContent=s.approval+'%';$('approvalBar').style.width=s.approval+'%';$('approvalHint').textContent=s.approval>=60?'Apoio popular em alta':s.approval<40?'Pressão popular elevada':'A população acompanha seu governo';
-$('cash').textContent=money(s.cash);$('inflation').textContent=s.inflation.toFixed(1).replace('.',',')+'%';$('unemployment').textContent=s.unemployment.toFixed(1).replace('.',',')+'%';
+$('cash').textContent=money(s.cash);$('personalCash').textContent='R$ '+Number(s.personalCash||0).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mi';$('personalCashPanel').textContent='R$ '+Number(s.personalCash||0).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mi';$('inflation').textContent=s.inflation.toFixed(1).replace('.',',')+'%';$('unemployment').textContent=s.unemployment.toFixed(1).replace('.',',')+'%';
 ['education','health','security','infra','diplomacy'].forEach(k=>{$(k).textContent=s[k]+'/100';$(k+'Bar').style.width=s[k]+'%'});
 $('congressSupport').textContent=s.support+'%';$('congressBar').style.width=s.support+'%';$('supportText').textContent=s.support+'%';$('supportBar').style.width=s.support+'%';
 $('electionApproval').textContent=s.approval+'%';$('electionBar').style.width=s.approval+'%';
@@ -106,7 +122,7 @@ $('electionActions').innerHTML=(s.year>=2030&&(s.year-2027)%4===3&&s.quarter===4
 $('history').innerHTML=s.history.length?s.history.map(x=>`<div class="news">${x}</div>`).join(''):'Nenhuma eleição realizada ainda.';
 $('diplomacyScore').textContent=s.diplomacy+'/100';$('diplomacyScoreBar').style.width=s.diplomacy+'%';
 $('tax').value=s.tax;$('taxOut').textContent=s.tax+'%';$('companyTax').value=s.companyTax;$('companyTaxOut').textContent=s.companyTax+'%';$('salary').value=s.salary;$('salaryOut').textContent='R$ '+s.salary.toLocaleString('pt-BR');$('investment').value=s.investment;$('investmentOut').textContent=['Muito baixo','Baixo','Médio','Alto','Muito alto'][s.investment-1];
-renderBudget();renderNews();}
+renderBudget();renderNews();renderMood();}
 function renderBudget(){let total=Object.values(s.budget).reduce((a,b)=>a+b,0);$('budgetTotal').textContent=money(total);$('ministryList').innerHTML=Object.entries(s.budget).map(([k,v])=>`<div class="ministry"><div><b>${k}</b><small>${money(v)} destinados</small></div><input aria-label="Orçamento ${k}" type="number" min="0" max="150" value="${v}" onchange="s.budget['${k}']=Math.max(0,Number(this.value)||0);renderBudget()"></div>`).join('')}
 function applyTaxes(){let old=s.tax;s.tax=+$('tax').value;s.companyTax=+$('companyTax').value;let delta=s.tax-old;s.cash+=delta*1.5;s.approval=clamp(s.approval-(delta>0?Math.ceil(delta/4):Math.floor(delta/5)));s.inflation=clamp(s.inflation+delta*.06,1,20);addNews(`O governo alterou a tributação sobre consumo para ${s.tax}% e sobre empresas para ${s.companyTax}%. Setores econômicos reagem à mudança.`);render()}
 function applyEconomy(){s.salary=+$('salary').value;s.investment=+$('investment').value;s.cash-=s.investment*4;s.approval=clamp(s.approval+(s.salary>1600?2:0));s.unemployment=clamp(s.unemployment-(s.investment-3)*.15,2,25);addNews(`Nova política econômica: salário mínimo simulado de R$ ${s.salary.toLocaleString('pt-BR')} e nível de investimento ${s.investment}/5.`);render()}
@@ -118,6 +134,22 @@ function negotiate(){s.cash-=1;s.support=clamp(s.support+Math.floor(Math.random(
 function voteLaw(){let law=$('law').selectedOptions[0].text,prob=s.support+(s.approval-50)*.25-Math.max(0,s.cash<30?10:0);if(Math.random()*100<prob){s.support=clamp(s.support-2);s.cash-=4;s.approval=clamp(s.approval+2);if($('law').value==='educacao')s.education=clamp(s.education+3);if($('law').value==='saude')s.health=clamp(s.health+3);if($('law').value==='infra')s.infra=clamp(s.infra+3);addNews(`Congresso aprovou: ${law}. A execução dependerá de regulamentação e orçamento.`);notify('Projeto aprovado!')}else{s.support=clamp(s.support-1);addNews(`O projeto "${law}" não alcançou votos suficientes e foi rejeitado nesta votação.`);notify('Projeto rejeitado na votação.')}render()}
 function investState(){if(s.cash<2){notify('Caixa insuficiente para liberar o investimento.');return}s.cash-=2;let area=$('stateArea').value;if(area==='education')s.education=clamp(s.education+1);if(area==='health')s.health=clamp(s.health+1);if(area==='infra')s.infra=clamp(s.infra+2);addNews(`Governo federal anunciou R$ 2 bilhões para ${$('state').value}, na área de ${$('stateArea').selectedOptions[0].text.toLowerCase()}.`);$('stateResult').textContent=`Investimento de R$ 2 bilhões anunciado para ${$('state').value}.`;render()}
 function diplomacyMove(){let a=$('diplomacyAction').value;s.diplomacy=clamp(s.diplomacy+4);s.cash-=1;s.approval=clamp(s.approval+1);addNews(`O Itamaraty iniciou uma iniciativa: ${$('diplomacyAction').selectedOptions[0].text}.`);render()}
+function personalContribution(){
+ let amount=+$('personalAmount').value,area=$('personalArea').value;
+ if(amount<=0||amount>(s.personalCash||0)){notify('Saldo pessoal insuficiente para essa contribuição.');return}
+ s.personalCash=+(s.personalCash-amount).toFixed(1);
+ s.cash+=amount/1000;
+ if(area==='education')s.education=clamp(s.education+Math.max(1,Math.floor(amount/10)));
+ if(area==='health')s.health=clamp(s.health+Math.max(1,Math.floor(amount/10)));
+ if(area==='infra')s.infra=clamp(s.infra+Math.max(1,Math.floor(amount/8)));
+ if(area==='security')s.security=clamp(s.security+Math.max(1,Math.floor(amount/10)));
+ if(area==='agro')s.approval=clamp(s.approval+Math.max(1,Math.floor(amount/15)));
+ s.approval=clamp(s.approval+1);
+ let names={education:'educação',health:'saúde',infra:'infraestrutura',security:'prevenção e segurança',agro:'agricultura familiar'};
+ addNews(`O presidente destinou R$ ${amount.toLocaleString('pt-BR')} milhões de seu patrimônio pessoal para um projeto de ${names[area]}. A contribuição foi registrada separadamente do orçamento público.`);
+ $('personalMessage').textContent=`Contribuição de R$ ${amount} milhões registrada. Novo saldo pessoal: R$ ${s.personalCash.toLocaleString('pt-BR')} milhões.`;
+ render();saveGame();
+}
 function advance(){s.quarter++;if(s.quarter>4){s.quarter=1;s.year++}let budget=Object.values(s.budget).reduce((a,b)=>a+b,0);s.cash+=14-(budget-180)*.08-(s.investment*1.2);s.inflation=clamp(s.inflation+(s.tax-18)*.015+(s.investment-3)*.08+(Math.random()-.5)*.35,1,20);s.unemployment=clamp(s.unemployment-(s.investment-3)*.12+(Math.random()-.5)*.25,2,25);s.approval=clamp(Math.round(s.approval+(s.cash<30?-3:0)+(s.inflation<5?1:0)+(s.unemployment<7?1:0)+(Math.random()*5-2.5)));s.education=clamp(s.education+(s.budget['Educação']>45?1:0));s.health=clamp(s.health+(s.budget['Saúde']>48?1:0));if(Math.random()<.65)addNews(['O IBGE simulado divulgou novos indicadores econômicos.','Governadores pediram reunião para discutir investimentos regionais.','O Congresso iniciou debate sobre prioridades do próximo trimestre.','Empresas anunciaram planos de investimento e geração de empregos.','Uma frente fria de preços internacionais pressiona setores da economia.'][Math.floor(Math.random()*5)]);if(s.year>=2030&&(s.year-2027)%4===3&&s.quarter===4)addNews('Ano eleitoral: partidos começam a organizar suas candidaturas presidenciais.');render();saveGame()}
 function holdElection(){let score=s.approval+(s.support-50)*.2+(s.education+s.health+s.security-180)*.05;let won=score>=50;let result=won?'reeleito':'não conseguiu a reeleição';s.history.unshift(`Eleição de ${s.year}: você ${result}. Aprovação final: ${s.approval}%.`);if(won){s.term++;s.year++;s.quarter=1;s.approval=clamp(s.approval-5);s.cash=Math.max(80,s.cash);addNews('Você venceu a eleição e iniciou um novo mandato. O novo ciclo de governo começou.')}else{addNews('A oposição venceu a eleição. Você iniciou a transição democrática e encerrou seu mandato.');notify('Fim de governo! Você perdeu a eleição. A partida será reiniciada para um novo presidente.');s={...defaults,history:s.history,news:s.news,year:s.year+1,quarter:1}}render();saveGame()}
 document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')}));
