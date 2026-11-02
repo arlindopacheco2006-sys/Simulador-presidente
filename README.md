@@ -1,24 +1,23 @@
-# Presidente do Brasil — O Simulador
+# Presidente do Brasil — Simulador
 
-Jogo web/PWA em português, adaptado para celular Android.
+Jogo web mobile-first feito com HTML, CSS e JavaScript puro. Não precisa instalar dependências nem configurar servidor.
 
-## Publicar pelo GitHub + Render
-1. Crie um repositório GitHub chamado `presidente-do-brasil`.
-2. Envie os arquivos deste pacote para a raiz do repositório: `index.html`, `manifest.json` e `sw.js`.
-3. No Render, escolha **New → Static Site** e conecte o repositório.
-4. Configure:
-   - Build Command: deixe vazio
-   - Publish Directory: `.`
-5. Clique em Deploy.
+## Como testar
+1. Extraia o ZIP.
+2. Abra `index.html` no navegador ou use a extensão Live Server.
 
-## Instalar no Android
-Abra o endereço publicado no Chrome → menu ⋮ → **Adicionar à tela inicial** (ou **Instalar app**, quando disponível).
+## Publicar no GitHub
+1. Crie um repositório público ou privado no GitHub.
+2. Envie **todos os arquivos e a pasta `assets` que estão dentro desta pasta** para a raiz do repositório.
+3. Para GitHub Pages: Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
+4. Para Render: New → Static Site → conecte o repositório. Build Command: deixe vazio. Publish Directory: `.`.
 
-## Como jogar
-- Use as abas para administrar economia, ministérios, defesa, Congresso, estados e relações internacionais.
-- Avance um trimestre por vez; quatro trimestres formam um ano.
-- O jogo salva no armazenamento local do navegador. Use “Salvar jogo” para gravar manualmente.
-- A eleição presidencial acontece no fim do quarto ano do mandato.
+## Recursos
+- Escolha de personagem e partido fictício.
+- Tutorial inicial, painel presidencial e navegação.
+- Decisões de governo com custos e efeitos nos indicadores.
+- Rede social simulada com publicações e reações.
+- Salvamento automático no navegador via localStorage.
+- Botão para reiniciar a partida.
 
-## Novidades da V1.1\n- Humor da população com cinco expressões, atualizado conforme a aprovação do governo.\n- Saldo pessoal fictício do presidente, separado do caixa público.\n- Opção de destinar recursos pessoais a projetos nacionais, com registro no noticiário e salvamento local.\n\n## Observação
-É uma simulação fictícia para entretenimento e aprendizagem cívica. Valores, efeitos e eventos são simplificados e não constituem previsões econômicas ou eleitorais.
+O conteúdo é uma simulação fictícia, sem vínculo com órgãos ou partidos reais. As imagens incluídas são recortes das referências fornecidas pelo usuário.
